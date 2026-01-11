@@ -11,5 +11,16 @@ export const loginSchema = z.object({
     password: z.string().min(1, 'Password is required')
 });
 
+export const blogSchema = z.object({
+    title: z.string().min(1, 'Title is required'),
+    category: z.string().min(1, 'Category is required'),
+    content: z.string().min(1, 'Content is required'),
+    image: z.string().url('Invalid URL').optional().or(z.literal(''))
+});
+
+export const updateBlogSchema = blogSchema.partial();
+
 export type SignupInput = z.infer<typeof signupSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
+export type BlogInput = z.infer<typeof blogSchema>;
+export type UpdateBlogInput = z.infer<typeof updateBlogSchema>;
