@@ -11,19 +11,37 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-3 text-white shadow-lg">
+        <nav className="bg-gray-800 px-4 py-3 text-white shadow-lg">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
                 <h1
-                    className="text-xl font-bold cursor-pointer hover:opacity-90 transition-opacity"
+                    className="text-2xl font-bold cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => navigate('/')}
                 >
                     BlogApp
                 </h1>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-6">
                     {isAuthenticated ? (
                         <>
-                            <span className="text-sm opacity-90">Hi, {user?.username}</span>
+                            <button
+                                onClick={() => navigate('/blogs')}
+                                className="hover:text-blue-200 transition-colors font-medium"
+                            >
+                                All Blogs
+                            </button>
+                            <button
+                                onClick={() => navigate('/my-blogs')}
+                                className="hover:text-blue-200 transition-colors font-medium"
+                            >
+                                My Blogs
+                            </button>
+                            <button
+                                onClick={() => navigate('/create-blog')}
+                                className="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-gray-100 transition-colors font-medium"
+                            >
+                                + Create Blog
+                            </button>
+                            <span className="text-sm opacity-90">Hi, {user?.name}</span>
                             <button
                                 onClick={handleLogout}
                                 className="px-4 py-2 text-sm font-medium bg-white/20 rounded-md hover:bg-white/30 transition-colors"
@@ -41,7 +59,7 @@ const Navbar = () => {
                             </button>
                             <button
                                 onClick={() => navigate('/signup')}
-                                className="px-4 py-2 text-sm font-medium bg-white text-indigo-600 rounded-md hover:bg-gray-100 transition-colors"
+                                className="px-4 py-2 text-sm font-medium bg-white text-blue-600 rounded-md hover:bg-gray-100 transition-colors"
                             >
                                 Sign Up
                             </button>
