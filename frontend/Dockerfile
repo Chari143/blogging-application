@@ -14,15 +14,17 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Production image
-FROM nginx:alpine
+# Production - serve with simple http server
+FROM node:18-alpine
 
-# Copy built files to nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Copy nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Install serve
+RUN npm install -g serve
 
-EXPOSE 80
+# Copy built files
+COPY --from=builder /app/dist ./dist
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3004
+
+CMD ["serve", "-s", "dist", "-l", "3004"]
