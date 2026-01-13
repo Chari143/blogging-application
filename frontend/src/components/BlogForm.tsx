@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { BlogInput } from '../types/blog';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3003';
 const categories = ['Travel', 'Tech', 'Finance', 'Career', 'Lifestyle', 'Food', 'Health', 'Education'];
 
 interface BlogFormProps {

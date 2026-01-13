@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import type { Blog } from '../types/blog';
 import BlogForm from '../components/BlogForm';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3003';
 
 const EditBlog = () => {
     const { id } = useParams<{ id: string }>();

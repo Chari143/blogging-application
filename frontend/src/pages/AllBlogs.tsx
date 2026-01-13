@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import type { Blog } from '../types/blog';
 import BlogCard from '../components/BlogCard';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3003';
 const categories = ['All', 'Travel', 'Tech', 'Finance', 'Career', 'Lifestyle', 'Food', 'Health', 'Education'];
 
 const AllBlogs = () => {

@@ -4,7 +4,7 @@ import type { Blog } from '../types/blog';
 import { useAuth } from '../context/AuthContext';
 import BlogCard from '../components/BlogCard';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3003';
 
 const MyBlogs = () => {
     const [blogs, setBlogs] = useState<Blog[]>([]);
